@@ -2,6 +2,10 @@
 
 This macro is meant to automate downtime rolls and create a report that can be added to a player's downtime journal so the player and GM can track assets gained, lost or changed from downtime activities.
 
+Ensure your players have the ability to create journals/journal pages if you're going to let them use the downtime macro.
+
+The macro does not need a pilot actor on the canvas to run, but will show a player all pilot actors they have access to.
+
 ![select pilot interface](public/images/pilotSelect.png)
 
 ![choose downtime activity](public/images/Activity.png)
