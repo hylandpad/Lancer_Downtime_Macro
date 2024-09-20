@@ -2,59 +2,59 @@ main();
 
 async function main() {
     // establish some terms used in the final report. 
-        let terms
-        let rollTermName
-        let activityTermName
-        let outcomeTermName
-        let locationTermName
-        let missionTermName
-        let skillTermName
-        let objectiveTermName
-        let pilotNoteTermName
-        let gmNoteTermName
-        
-        let termOptions = {
-            roll:{
-                diegetic:"//PROBABILITY COEFFICIENT",
-                rulebook:"Roll"
-            },
-            activity:{
-                diegetic:"//.EVAL(ACTIVITY)",
-                rulebook:"Downtime Activity"
-            },
-            outcome:{
-                diegetic:"PILOT.EVAL(ACTIVITY)",
-                rulebook:"Outcome"
-            },
-            location:{
-                diegetic:"//@LOC.DATA",
-                rulebook:"Location"
-            },
-            mission:{
-                diegetic:"#CENTCOM.OP-NAME",
-                rulebook:"Mission"
-            },
-            skill:{
-                diegetic:"//PILOT.MODUS",
-                rulebook:"Skill"
-            },
-            objective:{
-                diegetic:"//OBJ.THIS",
-                rulebook:"Objective"
-            },
-            pilotNote:{
-                diegetic:"//PILOT.LOG.NOTE",
-                rulebook:"Pilot Note"
-            },
-            gmNote:{
-                diegetic:"For Union Intelligence Analyst use only",
-                rulebook:"For GM use only"
-            }
-        }
+    let terms
+    let rollTermName
+    let activityTermName
+    let outcomeTermName
+    let locationTermName
+    let missionTermName
+    let skillTermName
+    let objectiveTermName
+    let pilotNoteTermName
+    let gmNoteTermName
 
-        function termSet(termMode){
-            terms = termMode
-            rollTermName = termOptions.roll[termMode],
+    let termOptions = {
+        roll: {
+            diegetic: "//PROBABILITY COEFFICIENT",
+            rulebook: "Roll"
+        },
+        activity: {
+            diegetic: "//.EVAL(ACTIVITY)",
+            rulebook: "Downtime Activity"
+        },
+        outcome: {
+            diegetic: "PILOT.EVAL(ACTIVITY)",
+            rulebook: "Outcome"
+        },
+        location: {
+            diegetic: "//@LOC.DATA",
+            rulebook: "Location"
+        },
+        mission: {
+            diegetic: "#CENTCOM.OP-NAME",
+            rulebook: "Mission"
+        },
+        skill: {
+            diegetic: "//PILOT.MODUS",
+            rulebook: "Skill"
+        },
+        objective: {
+            diegetic: "//OBJ.THIS",
+            rulebook: "Objective"
+        },
+        pilotNote: {
+            diegetic: "//PILOT.LOG.NOTE",
+            rulebook: "Pilot Note"
+        },
+        gmNote: {
+            diegetic: "For Union Intelligence Analyst use only",
+            rulebook: "For GM use only"
+        }
+    }
+
+    function termSet(termMode) {
+        terms = termMode
+        rollTermName = termOptions.roll[termMode],
             activityTermName = termOptions.activity[termMode],
             outcomeTermName = termOptions.outcome[termMode],
             locationTermName = termOptions.location[termMode],
@@ -64,12 +64,12 @@ async function main() {
             pilotNoteTermName = termOptions.pilotNote[termMode],
             gmNoteTermName = termOptions.gmNote[termMode]
 
-            console.log(`Terms set to ${termMode} (valid options are 'diegetic or 'rulebook')`)
-        }
+        console.log(`Terms set to ${termMode} (valid options are 'diegetic or 'rulebook')`)
+    }
 
     // by default, the macro will utilize diegetic terminology. If you need something more generic to fit into your setting, then switch the argument to 'rulebook' which will use less setting specific terms and remove the bits of flavor in the report and journal entry
     termSet('diegetic')
-        
+
     // Construct a Union Date based on today's date to be used as flavor later   
     let unionDate = () => {
         const date = new Date();
@@ -100,12 +100,15 @@ async function main() {
     // Activities
 
     // Each outcome is one of the activity options in the Core Rulebook.  It contains within it data to determine if its a rollable activity, and what descriptions any roll will have based on its roll total. ShortDesc,LongDesc and Info are divvied up so that they can be accessible discretely
-        // ShortDesc is used for flavoring the chat messages with an easy-to-read determination on the degree of success or failure
-        // LongDesc is a diegetic bit of flavor text to introduce the book-based ruling based on the roll
-        // Info is copied and pasted right from Core Rules to allow GM and player to know outcome options without needing to refer to Core Rules
-        
-    let Activities = {
-        "Power At A Cost": {
+    // ShortDesc is used for flavoring the chat messages with an easy-to-read determination on the degree of success or failure
+    // LongDesc is a diegetic bit of flavor text to introduce the book-based ruling based on the roll
+    // Info is copied and pasted right from Core Rules to allow GM and player to know outcome options without needing to refer to Core Rules
+
+    //You can add a custom downtime activity by adding a new object to the Activities array. Simply copy the format, determine if its rollable and give it a name. Currently, the macro is hard coded to adhere to a non-rollable out come, or outcomes that adhere to the normal 1-9, 10-19, 20+ paradigm. 
+
+    let Activities = [
+        {
+            Name: "Power At A Cost",
             Rollable: false,
             Results: {
                 0: {
@@ -116,7 +119,8 @@ async function main() {
             }
         },
 
-        "Get Focused": {
+        {
+            Name: "Get Focused",
             Rollable: false,
             Results: {
                 0: {
@@ -127,7 +131,8 @@ async function main() {
             }
         },
 
-        "Buy Some Time": {
+        {
+            Name: "Buy Some Time",
             Rollable: true,
             Results: {
                 "0-9": {
@@ -148,7 +153,8 @@ async function main() {
             }
         },
 
-        "Gather Information": {
+        {
+            Name: "Gather Information",
             Rollable: true,
             Results: {
                 "0-9": {
@@ -169,7 +175,8 @@ async function main() {
             }
         },
 
-        "Get A Damn Drink": {
+        {
+            Name: "Get A Damn Drink",
             Rollable: true,
             Results: {
                 "0-9": {
@@ -191,7 +198,8 @@ async function main() {
         },
 
 
-        "Get Creative": {
+        {
+            Name: "Get Creative",
             Rollable: true,
             Results: {
                 "0-9": {
@@ -212,7 +220,8 @@ async function main() {
             }
         },
 
-        "Get Organized": {
+        {
+            Name: "Get Organized",
             Rollable: true,
             Results: {
                 "0-9": {
@@ -233,7 +242,8 @@ async function main() {
             }
         },
 
-        "Get Connected": {
+        {
+            Name: "Get Connected",
             Rollable: true,
             Results: {
                 "0-9": {
@@ -254,7 +264,8 @@ async function main() {
             }
         },
 
-        "Scrounge And Barter": {
+        {
+            Name: "Scrounge And Barter",
             Rollable: true,
             Results: {
                 "0-9": {
@@ -274,7 +285,10 @@ async function main() {
                 }
             }
         }
-    }
+    ]
+
+    // Create activity dropdown list
+    let actList = Activities.map(act => `<option>${act.Name}</option>`).join('')
 
     let pilotData = {}; // Create an empty object to store pilot data
 
@@ -312,7 +326,7 @@ async function main() {
                                 name: s.name,
                                 description: s.name
                             }; // Default description is the skill name
-                            
+
                             let pilotSkill = pilotSkills.find(ps => ps.name === s.name);
 
                             if (pilotSkill) {
@@ -329,7 +343,6 @@ async function main() {
 
                     pilotSkillsHtml += pilotData.skills.map(s => `<option value="${s.name}">${s.description}</option>`).join("");
 
-                    // TO DO - Tokenize option content to pull directly from Activities object so custom activities can be more quickly added
                     let dialogContent = `
                         <div style="margin:1rem; font-family: monospace;">
                             <h2 class="lancer-border-primary"><img style="height:35px; border: none; top:.5rem; position:relative" src="systems/lancer/assets/icons/campaign.svg">Campaign or Mission</h2>   
@@ -344,17 +357,7 @@ async function main() {
                             <div style="margin-bottom:1rem; border-left: 2px; border-left-style: dotted; border-color:var(--primary-color, fuschia); padding-left: .5rem; margin-bottom:1rem;">
                                 <div style="margin-bottom:1rem">
                                     <p style="text-align: right;font-style: italic">Choose a downtime activity for ${pilotData.name}</p>
-                                    <select id="activity" style="width:100%; margin-bottom:.5rem;">    
-                                        <option id="Power">Power At A Cost</option>    
-                                        <option id="BuyTime">Buy Some Time</option>
-                                        <option id="Gather">Gather Information</option>
-                                        <option id="Drink">Get A Damn Drink</option>
-                                        <option id="Creative">Get Creative</option>
-                                        <option id="Focused">Get Focused</option>
-                                        <option id="Organized">Get Organized</option>
-                                        <option id="Connected">Get Connected</option>
-                                        <option id="ScroungeBarter">Scrounge And Barter</option>
-                                    </select>
+                                    <select id="activity" style="width:100%; margin-bottom:.5rem;">${actList}</select>
                                     <h3 class="lancer-border-primary" style="text-align: right; margin-bottom:1rem; border-bottom: none;">Downtime Objective<img style="height:35px; border: none; top:.5rem; position:relative" src="systems/lancer/assets/icons/deployable.svg"></h3>
                                     <p style="text-align: right; font-style:italic;">Describe what ${pilotData.name} is trying to achieve</p>
                                     <textarea placeholder="Brief description of aim or goal of downtime activity" style="display:inline; width: 100%; height: 100px; background-color: transparent; border: 1px #00000085 solid; border-radius: 3px;" type="text" id="objective"></textarea>
@@ -404,16 +407,19 @@ async function main() {
                                     // Roll string
                                     let rollString
 
+                                    // fetch the selected activity for use in outcome logic
+                                    let selectedAct = Activities.filter(act => act.Name === activity)
+
                                     // Determine if activity selected by player has an outcome that requires rolling or not
-                                    if (Activities[activity].Rollable === true) {
+                                    if (outcomeDesc = selectedAct[0].Rollable === true) {
 
                                         if (skillRank) {
-                                            rollString = `1d20 + ${2*(skillRank)}`
+                                            rollString = `1d20 + ${2 * (skillRank)}`
                                         } else {
                                             rollString = `1d20`
                                         }
                                         roll = await new Roll(rollString).evaluate()
-                                        
+
                                         // add roll result to chat object so Dice So Nice will render rolls
                                         chatMessage.rolls = roll
 
@@ -422,28 +428,30 @@ async function main() {
 
                                     // Logic based on roll to help define what chat message flavor text will display as well as set the Outcome for descriptions on the report (see outcomeDesc)
                                     if (!roll) {
-                                        // TO DO - add a chat message that displays when a non-rollable activity is selected
                                         console.log('non-rollable activity')
-                                        outcomeDesc = Activities[activity]['Results'][0]
+                                        outcomeDesc = selectedAct[0]['Results'][0]
+                                        chatMessage.flavor = `${activity} : Success`
+                                        chatMessage.content = `${pilotData.name} downtime activity expended`
+                                        ChatMessage.create(chatMessage)
                                     } else if (roll.total <= 9) {
-                                        chatMessage.flavor = `<p>${activity} : ${Activities[activity]['Results']['0-9']["ShortDesc"]}</p>`
+                                        chatMessage.flavor = `<p>${activity} : ${selectedAct[0]['Results']['0-9']["ShortDesc"]}</p>`
                                         roll.toMessage(chatMessage)
-                                        outcomeDesc = Activities[activity]['Results']['0-9']
+                                        outcomeDesc = selectedAct[0]['Results']['0-9']
                                     } else if (roll.total >= 10 && roll.total <= 19) {
-                                        chatMessage.flavor = `<p>${activity} : ${Activities[activity]['Results']['10-19']["ShortDesc"]}</p>`
+                                        chatMessage.flavor = `<p>${activity} : ${selectedAct[0]['Results']['10-19']["ShortDesc"]}</p>`
                                         roll.toMessage(chatMessage)
-                                        outcomeDesc = Activities[activity]['Results']['10-19']
+                                        outcomeDesc = selectedAct[0]['Results']['10-19']
                                     } else if (roll.total >= 20) {
-                                        chatMessage.flavor = `<p>${activity} : ${Activities[activity]['Results']['20+']["ShortDesc"]}</p>`
+                                        chatMessage.flavor = `<p>${activity} : ${selectedAct[0]['Results']['20+']["ShortDesc"]}</p>`
                                         roll.toMessage(chatMessage)
-                                        outcomeDesc = Activities[activity]['Results']['20+']
+                                        outcomeDesc = selectedAct[0]['Results']['20+']
                                     }
 
                                     // Dialog content for the summary modal. This modal exists to relay a more detailed breakdown of the consequences of the roll, and allow player to make notes on response to the outcome.
 
                                     let dialogContent = `
                                     <div style="margin: 1rem 0; padding: 1rem 1rem 0; background: white; border: 3px dashed black; font-family: monospace;">
-                                        ${terms == 'diegetic' ? '<p style="margin-bottom: .5rem; margin-top: -10px; font-style:italic; font-size: 10px">Omninet session id: ${sessionId} <span style="color:green">(OPEN)</span></p>' : ''}    
+                                        ${terms == 'diegetic' ? `<p style="margin-bottom: .5rem; margin-top: -10px; font-style:italic; font-size: 10px">Omninet session id: ${sessionId} <span style="color:green">(OPEN)</span></p>` : ''}    
                                         <h2 class="lancer-border-primary">${pilotData.name}: Downtime Report</h2>
                                         ${terms == 'diegetic' ? '<p style="text-align:right; font-style:italic; font-size: 10px">All data indexed and analyzed by UAD ARGUS class NHP</p>' : ''}
                                         <br />
@@ -521,12 +529,12 @@ async function main() {
 
                                                         let downtimeJournal = {}
 
-                                                        downtimeJournal.name = `Downtime_Journal.LOG//${(pilotData.name).replaceAll(' ','-')}`
+                                                        downtimeJournal.name = `Downtime_Journal.LOG//${(pilotData.name).replaceAll(' ', '-')}`
                                                         downtimeJournal.folder = game.folders.getName(journalFolderName)._id
 
 
                                                         //Find the pilot's journal to see if it exists
-                                                        if (!game.journal.getName(`Downtime_Journal.LOG//${(pilotData.name).replaceAll(' ','-')}`)) {
+                                                        if (!game.journal.getName(`Downtime_Journal.LOG//${(pilotData.name).replaceAll(' ', '-')}`)) {
 
                                                             console.log('Attempting to create new Downtime Journal for Pilot')
 
@@ -546,7 +554,7 @@ async function main() {
 
                                                         let JournalPageContent = `
                                                             <div style="margin: 1rem 0; padding: 1rem 1rem 0; background: white; border: 3px dashed black; font-family: monospace; max-width: 800px;">
-                                                            ${terms == 'diegetic' ? '<p style="margin-bottom: .5rem; margin-top: -10px; font-style:italic; font-size: 10px">Omninet session id: ${sessionId} <span style="color: red;">(CLOSED)</span></p>' : ''}  
+                                                            ${terms == 'diegetic' ? `<p style="margin-bottom: .5rem; margin-top: -10px; font-style:italic; font-size: 10px">Omninet session id: ${sessionId} <span style="color: red;">(CLOSED)</span></p>` : ''}  
                                                             <h2 class="lancer-border-primary">${pilotData.name}: Downtime Report</h2>
                                                             ${terms == 'diegetic' ? '<p style="text-align:right; font-style:italic; font-size: 10px">All data indexed and analyzed by UAD ARGUS class NHP</p>' : ''}
                                                             <br />
@@ -590,9 +598,19 @@ async function main() {
                                                             parent: game.journal.filter(a => a.name == downtimeJournal.name)[0]
                                                         }
 
-                                                        // Create journal page entry name using pilot name and 'UnionDate' - TO DO: Create iterating appender to add something in the event two downtimes are made in one real-life day.
+                                                        selectedJournal = game.journal.filter(a => a.name === downtimeJournal.name)[0]
+                                                        let counter = 0
+
+                                                        // Create journal page entry name using pilot name - TO DO: Improve page title incrementing to consistently increment the page to the max number found + 1
+
+                                                        let journalEntryNumber = selectedJournal.pages.size+1
+
+                                                        let newPageName = `DOWNTIME-ENTRY.${journalEntryNumber}//${(pilotData.name).replaceAll(' ', '-')}`
+
+                                                        console.log('making a new page called ' + newPageName)
+
                                                         let entrydata = {
-                                                            name: `LOG.ENTRY - ${(pilotData.name).replaceAll(' ','-')}//${unionDate()}`,
+                                                            name: newPageName,
                                                             type: "text",
                                                             text: {
                                                                 content: JournalPageContent
