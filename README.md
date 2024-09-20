@@ -30,4 +30,4 @@ The macro does not need a pilot actor on the canvas to run, but will show a play
 2. Render journal entries after they are logged to the journal
 
 ## Future wishlist:
-1. Add support for custom downtime activities with variable breakpoints for outcome (ie 1-5, 6-0, 11-15, 16+) 
+1. Add support for custom downtime activities with variable breakpoints for outcome (ie 1-5, 6-10, 11-15, 16+) 
