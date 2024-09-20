@@ -2,6 +2,14 @@
 
 This macro is meant to automate downtime rolls and create a report that can be added to a player's downtime journal so the player and GM can track assets gained, lost or changed from downtime activities.
 
+![select pilot interface](pilotSelect.png)
+
+![choose downtime activity](Activity.png)
+
+![view downtime report](Report.png)
+
+![log your report as a journal entry page](Journal.png)
+
 ## Customization
 
 1. You can add custom activities to the macro for your campaign. You will need to add a new object to the Activities array to do so. The object model looks like this for a non-rolled activity (such as Power at a Cost or Get Focused)
