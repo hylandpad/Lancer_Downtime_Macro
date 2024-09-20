@@ -2,13 +2,13 @@
 
 This macro is meant to automate downtime rolls and create a report that can be added to a player's downtime journal so the player and GM can track assets gained, lost or changed from downtime activities.
 
-![select pilot interface](pilotSelect.png)
+![select pilot interface](public/images/pilotSelect.png)
 
-![choose downtime activity](Activity.png)
+![choose downtime activity](public/images/Activity.png)
 
-![view downtime report](Report.png)
+![view downtime report](public/images/Report.png)
 
-![log your report as a journal entry page](Journal.png)
+![log your report as a journal entry page](public/images/Journal.png)
 
 ## Customization
 
