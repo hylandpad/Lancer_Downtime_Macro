@@ -20,7 +20,7 @@ The macro does not need a pilot actor on the canvas to run, but will show a play
     * <code>{Name: "Unrolled Activity Name",Rollable: false,Results: {0: {ShortDesc: "Success",LongDesc: "Some descriptive text",Info: "This is where I put the rules for the outcomes as they are listed in the core rulebook"}}}</code>
     
 2. Activities that require rolling require a bit more configuration
-    * <code>{Name: "Rolled Activity Name",Rollable: true,Results: {"0-9": {ShortDesc: "Mild Success",LongDesc: "Some descriptive text for a mild success",Info: "Detailed description from the book/ruleset"},"10-19": {ShortDesc: "Moderate Success",LongDesc: "Some descriptive text for a moderate success",Info: "Detaileddescription from the book/ruleset"},"20+": {ShortDesc: "Monumental Success",LongDesc: "Some descriptive text for a monumental success",Info: "Detailed description from the book/ruleset"}}}</code>
+    * <code>{Name: "Rolled Activity Name",Rollable: true,Results: {"0-9": {ShortDesc: "Mild Success",LongDesc: "Some descriptive text for a mild success",Info: "Detailed description from the book/ruleset"},"10-19": {ShortDesc: "Moderate Success",LongDesc: "Some descriptive text for a moderate success",Info: "Detailed description from the book/ruleset"},"20+": {ShortDesc: "Monumental Success",LongDesc: "Some descriptive text for a monumental success",Info: "Detailed description from the book/ruleset"}}}</code>
   
 3. Flavor Text in Report
     * The script has alternative styling for people who want a more generic or unflavored experience. Locate the termSet function invocation and change the argument from 'diegetic' to 'rulebook' to have most of the fluff stripped from the report
