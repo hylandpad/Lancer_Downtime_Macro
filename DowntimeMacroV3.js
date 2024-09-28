@@ -598,7 +598,7 @@ async function main() {
                                                             parent: game.journal.filter(a => a.name == downtimeJournal.name)[0]
                                                         }
 
-                                                        selectedJournal = game.journal.filter(a => a.name === downtimeJournal.name)[0]
+                                                        let selectedJournal = game.journal.filter(a => a.name === downtimeJournal.name)[0]
                                                         let counter = 0
 
                                                         // Create journal page entry name using pilot name - TO DO: Improve page title incrementing to consistently increment the page to the max number found + 1
