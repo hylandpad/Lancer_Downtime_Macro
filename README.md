@@ -43,7 +43,7 @@ Custom Activities Support (See V2 Changelog)
 ### V2 Custom Activity Sample w/ Variable Breakpoints
 You can add custom activities to the macro for your campaign. You will need to add a new object to the Activities array to do so. If the activity isnt rol-based, simply set the "Rollable" param to "False" and omit the "RollRange" property from the Results array. Otherwise, each roll breakpoint should have its own object within the Results array. Additionally, the "createRange" function is not very complex, so ensure your ranges dont have any overlap or some strange things may happen.
     * <code>
-    {Name: "Scrounge And Barter",
+    {Name: "New Custom Activity",
        Rollable: true,
        Results: [{
                   RollRange: createRange(1,4),
