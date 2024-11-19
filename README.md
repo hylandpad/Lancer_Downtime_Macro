@@ -42,42 +42,36 @@ Custom Activities Support (See V2 Changelog)
 
 ### V2 Custom Activity Sample w/ Variable Breakpoints
 You can add custom activities to the macro for your campaign. You will need to add a new object to the Activities array to do so. If the activity isnt rol-based, simply set the "Rollable" param to "False" and omit the "RollRange" property from the Results array. Otherwise, each roll breakpoint should have its own object within the Results array. Additionally, the "createRange" function is not very complex, so ensure your ranges dont have any overlap or some strange things may happen.
-    * <code>{
-                Name: "Scrounge And Barter",
-                Rollable: true,
-                Results: [
-                    {
-                        RollRange: createRange(1,4),
-                        ShortDesc: "T1 Success",
-                        LongDesc: "T1 Long Description",
-                        Info: "T1 Informational Flavor Text"
-                    },
-      {
-                        RollRange: createRange(5,9),
-                        ShortDesc: "T2 Success",
-                        LongDesc: "T2 Long Description",
-                        Info: "T2 Informational Flavor Text"
-                    },
-                    {
-                        RollRange: createRange(10,14),
-                        ShortDesc: "T3 Success",
-                        LongDesc: "T3 Long Description",
-                        Info: "T3 Informational Flavor Text"
-                    },
-      {
-                        RollRange: createRange(15,19),
-                        ShortDesc: "T3 Success",
-                        LongDesc: "T3 Long Description",
-                        Info: "T3 Informational Flavor Text"
-                    },
-      {
-                        RollRange: createRange(20,100),
-                        ShortDesc: "Monumental Success",
-                        LongDesc: "Monumental Long Description",
-                        Info: "Monumental Informational Flavor Text"
-                    },
-                ]
-            }</code>
+    * <code>
+    {Name: "Scrounge And Barter",
+       Rollable: true,
+       Results: [{
+                  RollRange: createRange(1,4),
+                  ShortDesc: "T1 Success",
+                  LongDesc: "T1 Long Description",
+                  Info: "T1 Informational Flavor Text"},
+                  {
+                  RollRange: createRange(5,9),
+                  ShortDesc: "T2 Success",
+                  LongDesc: "T2 Long Description",
+                  Info: "T2 Informational Flavor Text"},
+                  {
+                  RollRange: createRange(10,14),
+                  ShortDesc: "T3 Success",
+                  LongDesc: "T3 Long Description",
+                  Info: "T3 Informational Flavor Text"},
+                  {
+                  RollRange: createRange(15,19),
+                  ShortDesc: "T3 Success",
+                  LongDesc: "T3 Long Description",
+                  Info: "T3 Informational Flavor Text"},
+                  {
+                  RollRange: createRange(20,100),
+                  ShortDesc: "Monumental Success",
+                  LongDesc: "Monumental Long Description",
+                  Info: "Monumental Informational Flavor Text"},
+                ]}
+</code>
 
 ## TO DOs for V3:
 1. Better incrementing logic for journal entries in downtime folder
