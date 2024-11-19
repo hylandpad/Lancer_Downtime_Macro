@@ -16,20 +16,62 @@ The macro does not need a pilot actor on the canvas to run, but will show a play
 
 ## Customization
 
-1. You can add custom activities to the macro for your campaign. You will need to add a new object to the Activities array to do so. The object model looks like this for a non-rolled activity (such as Power at a Cost or Get Focused)
-    * <code>{Name: "Unrolled Activity Name",Rollable: false,Results: {0: {ShortDesc: "Success",LongDesc: "Some descriptive text",Info: "This is where I put the rules for the outcomes as they are listed in the core rulebook"}}}</code>
-    
-2. Activities that require rolling require a bit more configuration
-    * <code>{Name: "Rolled Activity Name",Rollable: true,Results: {"0-9": {ShortDesc: "Mild Success",LongDesc: "Some descriptive text for a mild success",Info: "Detailed description from the book/ruleset"},"10-19": {ShortDesc: "Moderate Success",LongDesc: "Some descriptive text for a moderate success",Info: "Detailed description from the book/ruleset"},"20+": {ShortDesc: "Monumental Success",LongDesc: "Some descriptive text for a monumental success",Info: "Detailed description from the book/ruleset"}}}</code>
-  
-3. Flavor Text in Report
+Flavor Text in Report
     * The script has alternative styling for people who want a more generic or unflavored experience. Locate the termSet function invocation and change the argument from 'diegetic' to 'rulebook' to have most of the fluff stripped from the report
+Custom Activities Support (See V2 Changelog)
+   * Custom activities with custom breakpoints are now supported
 
-## TO DOs for V4:
+## V2 Changelog
+1. Added 3 Different Types of overrides for players who want to augment their downtimes
+   1. Flat Overrides - these add a flat bonus or malus to the roll (ie - 1, -2)
+   2. Accuracy/Difficulty - add multiple stacking accuracy or difficulty to the roll
+   3. Static Override - this will roll the result input. Especially useful if you need to replicate a roll that was done physically or if the player just forgot to log the downtime ot their journal. Note - Things can get a little weird here if you have custom activities with rolls above 20, so play with it at your own risk
+2. In addition, Overrides come with notes that show up in the output. Any roll that undergoes an override will say as much, so no players can sneak a fast one in on the GM.
+3. Changes have been made to the underlying logic of the roll and the structure of the Activity Object that holds all Activity data. It should now be easier to make custom activities with custom breakpoints (as many as you want, theoretically) The new structure for the Activities Array is below
+4. Widened the dialog window for better readability
+
+### V2 Custom Activity Sample w/ Variable Breakpoints
+You can add custom activities to the macro for your campaign. You will need to add a new object to the Activities array to do so. If the activity isnt rol-based, simply set the "Rollable" param to "False" and omit the "RollRange" property from the Results array. Otherwise, each roll breakpoint should have its own object within the Results array.
+    * <code>{
+                Name: "Scrounge And Barter",
+                Rollable: true,
+                Results: [
+                    {
+                        RollRange: createRange(1,4),
+                        ShortDesc: "T1 Success",
+                        LongDesc: "T1 Long Description",
+                        Info: "T1 Informational Flavor Text"
+                    },
+      {
+                        RollRange: createRange(5,9),
+                        ShortDesc: "T2 Success",
+                        LongDesc: "T2 Long Description",
+                        Info: "T2 Informational Flavor Text"
+                    },
+                    {
+                        RollRange: createRange(10,14),
+                        ShortDesc: "T3 Success",
+                        LongDesc: "T3 Long Description",
+                        Info: "T3 Informational Flavor Text"
+                    },
+      {
+                        RollRange: createRange(15,19),
+                        ShortDesc: "T3 Success",
+                        LongDesc: "T3 Long Description",
+                        Info: "T3 Informational Flavor Text"
+                    },
+      {
+                        RollRange: createRange(20,100),
+                        ShortDesc: "Monumental Success",
+                        LongDesc: "Monumental Long Description",
+                        Info: "Monumental Informational Flavor Text"
+                    },
+                ]
+            }</code>
+
+## TO DOs for V3:
 1. Better incrementing logic for journal entries in downtime folder
 2. Render journal entries after they are logged to the journal
-3. Add an admin override for manually inputing results as opposed to rolling for them
-4. Add homebrew options for adding flat bonuses to rolls, as well as accuracy/difficulty and auto-succeed/fail (for GM overrides)
 
 ## Future wishlist:
-1. Add support for custom downtime activities with variable breakpoints for outcome (ie 1-5, 6-10, 11-15, 16+)
+1. Better organization support? (that could be nifty)
