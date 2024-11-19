@@ -23,15 +23,25 @@ Custom Activities Support (See V2 Changelog)
 
 ## V2 Changelog
 1. Added 3 Different Types of overrides for players who want to augment their downtimes
+
+   ![V2 Overrides](public/images/V2-1.png)
    1. Flat Overrides - these add a flat bonus or malus to the roll (ie - 1, -2)
    2. Accuracy/Difficulty - add multiple stacking accuracy or difficulty to the roll
-   3. Static Override - this will roll the result input. Especially useful if you need to replicate a roll that was done physically or if the player just forgot to log the downtime ot their journal. Note - Things can get a little weird here if you have custom activities with rolls above 20, so play with it at your own risk
-2. In addition, Overrides come with notes that show up in the output. Any roll that undergoes an override will say as much, so no players can sneak a fast one in on the GM.
-3. Changes have been made to the underlying logic of the roll and the structure of the Activity Object that holds all Activity data. It should now be easier to make custom activities with custom breakpoints (as many as you want, theoretically) The new structure for the Activities Array is below
-4. Widened the dialog window for better readability
+   3. Static Override - this will roll the result input. Especially useful if you need to replicate a roll that was done physically or if the player just forgot to log the downtime ot their journal. Note - Things can get a little weird here if you have custom activities with insanely high rolls, so play with it at your own risk and try and keep the rolls under a 100 max.
+3. Flat Overrides & Acc/Diff Overrides can be combined so go nuts giving your players as many bonuses and maluses as you want. However, static overrides will take precedent over any other type of override
+
+   ![V2 Rolls](public/images/V2-roll.png)
+4. In addition, Overrides come with notes that show up in the output. Any roll that undergoes an override will say as much, so no players can sneak a fast one in on the GM.
+
+   ![V2 Notes](public/images/V2-2.png)
+5. Changes have been made to the underlying logic of the roll and the structure of the Activity Object that holds all Activity data. It should now be easier to make custom activities with custom breakpoints (as many as you want, theoretically) The new structure for the Activities Array is below
+6. Journal Entries have been modified to also show Overrides and Override notes
+
+   ![V2 Journal](public/images/V2-3.png)
+7. Widened the dialog window for better readability
 
 ### V2 Custom Activity Sample w/ Variable Breakpoints
-You can add custom activities to the macro for your campaign. You will need to add a new object to the Activities array to do so. If the activity isnt rol-based, simply set the "Rollable" param to "False" and omit the "RollRange" property from the Results array. Otherwise, each roll breakpoint should have its own object within the Results array.
+You can add custom activities to the macro for your campaign. You will need to add a new object to the Activities array to do so. If the activity isnt rol-based, simply set the "Rollable" param to "False" and omit the "RollRange" property from the Results array. Otherwise, each roll breakpoint should have its own object within the Results array. Additionally, the "createRange" function is not very complex, so ensure your ranges dont have any overlap or some strange things may happen.
     * <code>{
                 Name: "Scrounge And Barter",
                 Rollable: true,
