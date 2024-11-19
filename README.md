@@ -18,6 +18,7 @@ The macro does not need a pilot actor on the canvas to run, but will show a play
 
 Flavor Text in Report
     * The script has alternative styling for people who want a more generic or unflavored experience. Locate the termSet function invocation and change the argument from 'diegetic' to 'rulebook' to have most of the fluff stripped from the report
+
 Custom Activities Support (See V2 Changelog)
    * Custom activities with custom breakpoints are now supported
 
@@ -72,6 +73,9 @@ You can add custom activities to the macro for your campaign. You will need to a
                   Info: "Monumental Informational Flavor Text"},
                 ]}
 </code>
+
+## Issues
+1. going into negative rolls will result in bad functionality. need to implement a floor of 1 for all rolls and overrides.
 
 ## TO DOs for V3:
 1. Better incrementing logic for journal entries in downtime folder
