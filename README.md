@@ -74,9 +74,6 @@ You can add custom activities to the macro for your campaign. You will need to a
                 ]}
 </code>
 
-## Issues
-1. going into negative rolls will result in bad functionality. need to implement a floor of 1 for all rolls and overrides.
-
 ## TO DOs for V3:
 1. Better incrementing logic for journal entries in downtime folder
 2. Render journal entries after they are logged to the journal
