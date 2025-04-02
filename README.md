@@ -63,9 +63,9 @@ You can add custom activities to the macro for your campaign. You will need to a
                   Info: "T3 Informational Flavor Text"},
                   {
                   RollRange: createRange(15,19),
-                  ShortDesc: "T3 Success",
-                  LongDesc: "T3 Long Description",
-                  Info: "T3 Informational Flavor Text"},
+                  ShortDesc: "T4 Success",
+                  LongDesc: "T4 Long Description",
+                  Info: "T4 Informational Flavor Text"},
                   {
                   RollRange: createRange(20,100),
                   ShortDesc: "Monumental Success",
